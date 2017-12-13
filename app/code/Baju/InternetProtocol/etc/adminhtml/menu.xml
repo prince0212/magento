@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Baju_InternetProtocol::parent" title="Baju InternetProtocol" module="Baju_InternetProtocol" sortOrder="100" resource="Baju_InternetProtocol::parent"/>
+        <add id="Baju_InternetProtocol:internetprotocol" translate="title" title="Internet Protocol" module="Baju_InternetProtocol" sortOrder="1001" parent="Baju_InternetProtocol::parent" action="internetprotocol/index" resource="Baju_InternetProtocol::internetprotocol"/>
+    </menu>
+</config>

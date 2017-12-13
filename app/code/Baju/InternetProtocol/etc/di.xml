@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="internetprotocol_listing_data_source" xsi:type="string">Baju\InternetProtocol\Model\ResourceModel\Ip\Collection</item>
+                <item name="internetprotocol_index_grid_data_source" xsi:type="string">Baju\InternetProtocol\Model\ResourceModel\Ip\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Baju\InternetProtocol\Api\IpRepositoryInterface" type="Baju\InternetProtocol\Model\ResourceModel\IpRepository" />
+    <preference for="Baju\InternetProtocol\Api\Data\IpSearchResultInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Baju\InternetProtocol\Api\Data\IpInterface" type="Baju\InternetProtocol\Model\Data\Ip"/>
+</config>
