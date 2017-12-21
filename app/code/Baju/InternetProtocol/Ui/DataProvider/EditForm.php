@@ -19,7 +19,7 @@ class EditForm extends \Magento\Ui\DataProvider\AbstractDataProvider
     /**
      * EditForm constructor
      *
-     * @param string $ip
+     * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
      * @param Collection $collection
@@ -27,7 +27,7 @@ class EditForm extends \Magento\Ui\DataProvider\AbstractDataProvider
      * @param array $data
      */
     public function __construct(
-        $ip,
+        $name,
         $primaryFieldName,
         $requestFieldName,
         Collection $collection,
@@ -35,9 +35,9 @@ class EditForm extends \Magento\Ui\DataProvider\AbstractDataProvider
         array $meta = [],
         array $data = []
     ) {
-        parent::__construct($ip, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->collection = $collection;
         $this->_storeManager = $storeManager;
+        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
     /**
@@ -52,9 +52,8 @@ class EditForm extends \Magento\Ui\DataProvider\AbstractDataProvider
         $items = $this->collection->getItems();
         foreach ($items as $item) {
             $data = $item->getData();
-            
             $result[$item->getData('ip_id')] = array(
-                'ip' => $data
+                'internetprotocol' => $data
             );
         }
         return $result;

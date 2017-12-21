@@ -37,7 +37,7 @@ interface IpInterface
      *
      * @return string
      */
-    public function getEmail();
+    public function getEmailId();
 
     /**
      * Set id
@@ -61,5 +61,5 @@ interface IpInterface
      * @param string $title
      * @return string
      */
-    public function setEmail($email);
+    public function setEmailId($email);
 }

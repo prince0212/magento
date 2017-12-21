@@ -58,9 +58,8 @@ class CustomerLogin implements ObserverInterface
 	 */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $customer['ip'] =  $this->getIpAddress($$observer);
-        $customer['email'] = $this->getCustomerEmail($observer);
-
+        $customer['ip'] =  $this->getIpAddress($observer);
+        $customer['email_id'] = $this->getCustomerEmail($observer);
        	$ip = $this->ipFactory->create();
         $this->dataObjectHelper->populateWithArray(
             $ip,

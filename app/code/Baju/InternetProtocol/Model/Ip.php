@@ -46,7 +46,7 @@ class Ip extends AbstractModel implements \Baju\InternetProtocol\Api\Data\IpInte
      *
      * @return string|null
      */
-    public function getEmail()
+    public function getEmailId()
     {
         return $this->getData(self::EMAIL);
     }
@@ -79,7 +79,7 @@ class Ip extends AbstractModel implements \Baju\InternetProtocol\Api\Data\IpInte
      * @param string $email
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmailId($email)
     {
         return $this->setData(self::EMAIL, $email);
     }

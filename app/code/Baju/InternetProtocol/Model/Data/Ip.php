@@ -65,7 +65,7 @@ class Ip extends AbstractModel  implements \Baju\InternetProtocol\Api\Data\IpInt
      *
      * @return int
      */
-    public function getEmail()
+    public function getEmailId()
     {
         return $this->get(self::EMAIL);
     }
@@ -99,7 +99,7 @@ class Ip extends AbstractModel  implements \Baju\InternetProtocol\Api\Data\IpInt
      * @param \Magento\Customer\Api\Data\RegionInterface $region
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmailId($email)
     {
         return $this->setData(self::EMAIL, $email);
     }

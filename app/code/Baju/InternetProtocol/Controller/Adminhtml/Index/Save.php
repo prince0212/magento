@@ -46,7 +46,7 @@ class Save extends AbstractController
         \Baju\InternetProtocol\Model\Data\IpFactory $ipFactory,
         \Magento\Framework\Api\DataObjectHelper $dataObjectHelper
     ) {
-        parent::__construct($context, $resultPageFactory, $iptRepository, $registry);
+        parent::__construct($context, $resultPageFactory, $ipRepository, $registry);
         $this->ipRepository = $ipRepository;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->ipFactory = $ipFactory;
@@ -64,7 +64,7 @@ class Save extends AbstractController
         $ip = $this->ipFactory->create();
         $this->dataObjectHelper->populateWithArray(
             $ip,
-            $ipData['ip'],
+            $ipData['internetprotocol'],
             '\Baju\InternetProtocol\Api\Data\IpInterface'
         );
 
