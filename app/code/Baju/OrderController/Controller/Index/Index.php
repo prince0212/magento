@@ -39,7 +39,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $jsonPage = $this->_jsonFactory->create();
+        $jsonPage = $this->jsonFactory->create();
         $orderId = $this->getRequest()->getParam('id');
         $data = "Order Controller";
 
