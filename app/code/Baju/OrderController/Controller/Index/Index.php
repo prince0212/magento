@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Class Index
+ */
 namespace Baju\OrderController\Controller\Index;
 
 class Index extends \Magento\Framework\App\Action\Action
