@@ -4,9 +4,23 @@ namespace Baju\OrderController\Controller\Index;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    protected $_jsonFactory;
-    protected $_order;
+    /**
+     * @var \Magento\Framework\Controller\Result\JsonFactory
+     */
+    private $jsonFactory;
+
+    /**
+     * @var \Magento\Sales\Api\OrderRepositoryInterface
+     */
+    private $order;
     
+    /**
+     * construct
+     *
+     * @param \Magento\Framework\App\Action\Context
+     * @param \Magento\Framework\Controller\Result\JsonFactory
+     * @param \Magento\Sales\Api\OrderRepositoryInterface
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context, 
         \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
@@ -14,10 +28,15 @@ class Index extends \Magento\Framework\App\Action\Action
     )
     {
         parent::__construct($context);
-        $this->_jsonFactory = $jsonFactory;
-        $this->_order = $orderRespository;
+        $this->jsonFactory = $jsonFactory;
+        $this->order = $orderRespository;
     }
- 
+
+    /**
+     * execute
+     * 
+     * @return object
+     */
     public function execute()
     {
         $jsonPage = $this->_jsonFactory->create();
@@ -29,24 +48,22 @@ class Index extends \Magento\Framework\App\Action\Action
         }
 
         try {
-            $_orderData = $this->_order->get($orderId);
-            if($_orderData->getIsCustomerGuest()){
-                $data['total'] = $_orderData->getGrandTotal();
-                $data['status'] = $_orderData->getStatus();
-                foreach($_orderData->getAllItems() as $_items){
-                    $data['item']['sku'] = $_items->getSku();
-                    $data['item']['item_id'] = $_items->getItemId();
-                    $data['item']['price'] = $_items->getPrice();
+            $orderData = $this->order->get($orderId);
+            if($orderData->getIsCustomerGuest()){
+                $data['total'] = $orderData->getGrandTotal();
+                $data['status'] = $orderData->getStatus();
+                foreach($orderData->getAllItems() as $items){
+                    $data['item']['sku'] = $items->getSku();
+                    $data['item']['item_id'] = $items->getItemId();
+                    $data['item']['price'] = $items->getPrice();
                 }
-                $data['total_invoiced'] = $_orderData->getTotalInvoiced();
+                $data['total_invoiced'] = $orderData->getTotalInvoiced();
             } else {
                 $data = "Unfortunatily Order Id : ".$orderId." is not a guest User";
             }
-
         } catch(Exception $e) {
-            echo $e;
+            throw new Exception($e->getMessage(), 1);
         }
-        
         return $jsonPage->setData($data);
     }
 }
